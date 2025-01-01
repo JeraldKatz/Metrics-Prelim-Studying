@@ -1,0 +1,82 @@
+
+
+
+\section{2021 Stats August Answers}
+\subsection{1.a}
+\begin{enumerate}
+    \item
+    Take any \(B \in \mathcal{B}\), and recall the following definition of the marginal distribution of \(Y\): \(P(y\in B) = \int_{\Bbb R} f_Y(y) d\lambda(y)\); \(f_Y(y)\) is the marginal distribution.  Let \(\mathbf{1}_B(y)\) be an indicator function such that:
+    \[
+    \mathbf{1}_B(y) =
+    \begin{cases}
+        1 & \text{if}\quad y\in B \\
+        0 & \text{Otherwise}
+    \end{cases}
+    \]
+    \begin{align*}
+        P(y\in B) = \int_{\Bbb R^2} \mathbf{1}_B(y) f(x,y) d\lambda(x,y) \\
+        = \int_{\Bbb R} \int_{\Bbb R} \mathbf{1}_B(y) f(x,y) \;d\lambda(x) \; d\lambda(y) \\
+        = \int_{\Bbb R} \mathbf{1}_B(y) \left (\int_{\Bbb R}  f(x,y) \;d\lambda(x) \right ) \; d\lambda(y) \\
+        = \int_B \left (\int_{\Bbb R}  f(x,y) \;d\lambda(x) \right ) \; d\lambda(y) 
+    \end{align*}
+    Using our definition of the marginal distribution of \(y\), we can see that \(f_Y(y)= \int_{\Bbb R} f(x,y) d\lambda(x)\) as desired.
+    It can be shown by the same steps that \(f_X(x)= \int_{\Bbb R} f(x,y) d\lambda(y)\).
+    \item
+    
+\end{enumerate}
+\subsection{1.b}
+By the orthogonal projection definition of expected value, we have \(E[(Y-E[Y|X])h(x)] = 0\), where \(h(x)\) is any \(\mathcal{L}^2\)-measurable function.  Please note that \(Y-aX\) is a \(\mathcal{L}^2\)-measurable function.  Plugging \(aX\) in for \(E[Y|X]\) and \(Y-aX\) in for \(h(x)\), we have \(E[(Y-aX)^2]=0\), where \(E[(Y-aX)^2]\) is also known as the mean-squared-error (MSE). Therefore, \(a\) should minimize the MSE.  We start with:
+\[
+E[(Y-aX)^2] = E(Y^2)-2aE(YX)+a^2E(X^2)
+\]
+Taking the first order conditions:
+\[
+\frac{\partial}{\partial a}E[(Y-aX)^2] = -2E(YX) + 2aE(X^2)=0
+\]
+\[
+\Leftrightarrow aE[X^2]=E[YX]
+\]
+\[
+\Leftrightarrow a = \frac{E[YX]}{E[X^2]}
+\]
+\subsection{2.b}
+\begin{enumerate}
+    \item \(E[|X_n|]=\mathcal{O(a_n)}\) \\
+    This is equivalent to: 
+    \[
+    \limsup_{n\rightarrow\infty} \frac{E[|X_n|]}{a_n} \leq C
+    \]
+    for some constant \(C\).  Consider \(P(\frac{E[|X_n|]}{a_n}> \delta)\).  By Markov's Inequality:
+    \begin{align*}
+        P(\frac{|X_n|}{a_n}> \delta) \leq \frac{E\left [\frac{|X_n|}{a_n}\right ]}{\delta} \\
+        =\delta^{-1}E\left [\frac{|X_n|}{a_n}\right ] = \delta^{-1}\frac{E[|X_n|]}{a_n}
+    \end{align*}
+    because \(a_n\) is a series of non-stochastic, non-negative numbers. \\
+    Because \(E[|X_n|]=\mathcal{O(a_n)}\), for a $n$ large enough, that is \(n\geq n_0 \in {\Bbb N}\):
+    \[
+    \delta^{-1}\frac{E[|X_n|]}{a_n} \leq \frac{C}{\delta}
+    \]
+    So, for every \(\varepsilon>0\), chose $\delta$ such that \(\frac{C}{\delta}<\varepsilon\).  We now have that for every \(\varepsilon>0, \exists \;n\geq n_0 \in {\Bbb N}\;\&\; \delta>0 \) such that:
+    \[
+    P \left (\frac{X_n}{a_n} > \delta \right) \leq P \left (\frac{|X_n|}{a_n}> \delta\right ) <\varepsilon
+    \]
+    \(\therefore X_n =\mathcal{O}_p(a_n)\) as desired.
+    \item \(E[X_n^2]=\mathcal{O}(b_n)\) \\
+    This is equivalent to: 
+    \begin{align*}
+        \limsup_{n\rightarrow\infty} \frac{E[X_n^2]}{b_n} \leq C  \nonumber\\
+        \Leftrightarrow \quad \limsup_{n\rightarrow\infty} E[X^2] \leq C \cdot b_n \nonumber \\
+        \Leftrightarrow \quad \limsup_{n\rightarrow\infty} (E[X^2])^{1/2} \leq \sqrt{C \cdot b_n} 
+    \end{align*}
+    \(f(x) = x^2\) is a concave function, so by Jensen's inequality:
+    \[
+    (E[X_n^2])^{1/2} = (E[|X_n|^2])^{1/2} \geq E[(|X_n|^2)^{1/2}] = E[|X_n|]
+    \]
+    Note that \(C' = \sqrt{C}\) is still a constant.  We have:
+    \begin{align*}
+         \limsup_{n\rightarrow\infty}E[|X_n|] \leq \limsup_{n\rightarrow\infty} (E[X^2])^{1/2} \leq C'b^{1/2} \\
+         \Leftrightarrow \limsup_{n\rightarrow\infty} \frac{E[|X_n|]}{b_n^{1/2}} \leq C' \\
+         \Leftrightarrow E(|X_n|) = \mathcal{O}(b_n^{1/2})
+    \end{align*}
+    By part 1, and because \(b_n^{1/2}\) is a series of non-negative, non-stochastic numbers, \(X_n=\mathcal{O}_p(b_n^{1/2})\)
+\end{enumerate}

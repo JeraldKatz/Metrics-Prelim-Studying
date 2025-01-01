@@ -1,0 +1,28 @@
+\section{2020 Stats August Answers}
+\subsection{1.b}
+Restrictions on \(f\)
+\begin{enumerate}
+    \item First we verify that \(f(X)\) is well behaved by verifying its measurability.  For \(f(X)\) to be a random variable: \\
+    If $h(\omega):= f(x(\omega))=(f\circ X)(\omega): (\Omega,\mathcal{F},P)\rightarrow({\Bbb R},\mathcal{B}({\Bbb R}))$ is a random variable. \\
+    \(h^{-1}(B)=X^{-1}(f^{-1}(B)) \in \mathcal{F}\)
+    \item We will next show that \(f(X)^2\) is integrable.  For \(E[f(x^2)]<\infty\): \\
+    Note that \(f(X)^2\) is measurable, and therefore well-behaved by the following: \(h(\omega)=f(X)\) is measurable and \(g(x)=x^2\) is continuous.  So \(g(f(X))=f(X)^2\) is measurable.\\
+    For \(E[f(x^2)]<\infty\) to hold,
+    \begin{enumerate}
+        \item \(f(X)^2\) is bounded: \(\text{sup}_{\omega \in \Omega}|h(\omega)= \text{sup}_{\omega \in \Omega}|(f\circ X)(\omega)|<C\).  Then, \\
+        \(|\int f^2 dP \leq \int h^2 dP \leq C \int dP = C^2\)
+        \item \(f(X)^2\) is dominated by \(X^2\): \(h^2 \leq X^2 \;\forall\;\omega\in\Omega\).  Then, \\
+        \(\int h^2 dP \leq fX^2 dP < \infty\)
+    \end{enumerate}
+\end{enumerate}
+\subsection{1.c}
+% If \(X\) and \(Y\) are defined on the same probability space - let's call it \((\Omega, \mathcal{F}, P)\) -, then they are both \(\mathcal{F}\)-measurable.  As such, using the orthogonality property of expectation and conditional expectation, we have:
+% \begin{align*}
+%     E[(Y-E(Y|X))h(\omega)] = 0 \\
+%    \&\quad  E[(Y-E(Y))h(\omega)] = 0
+% \end{align*}
+% where \(h(\omega)\) is any \(\mathcal{F}\)-measurable function.
+% We can rewrite these as: 
+% \[E(Y|X)h(\omega)=E[Yh(\omega)] = E(Y)h(\omega)\]
+% Dividing by \(h(\omega)\), we have: \\
+% \(E(Y|X) = E(Y) \Rightarrow P(E(Y|X)=E(Y))=1\) as desired. 
