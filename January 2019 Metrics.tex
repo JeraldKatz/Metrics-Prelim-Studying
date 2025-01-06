@@ -1,0 +1,32 @@
+\section{2019 Metrics January Answers}
+\subsection{a}
+Starting from the criterion function:
+\[
+Q(\beta) =(y-X\beta)'P_W (y-X\beta)
+\]
+We take first order conditions, we have:
+\[
+\frac{\partial Q(\beta)}{\partial \beta} = -2 X'P_W (y-X\hat{\beta})=0
+\] \[
+\Leftrightarrow X'P_W y = X'P_W X \hat{\beta}_{IV}
+\]\[
+\Leftrightarrow \hat{\beta}_{IV} = (X'P_W X)^{-1}X'P_W y
+\]
+To consider asymptotic identification, let \(\alpha(\beta):= n^{-1}X'P_W (y-X\beta)\).  For asymptotic identification to hole, we need:
+\[
+\text{plim}_{n\rightarrow\infty} \alpha(\beta) = \text{plim}_{n\rightarrow\infty}n^{-1}X'P_W (y-X\beta) \neq 0 \quad \forall \;\beta\neq \beta_0
+\]
+Please note that \(\alpha(\beta_0) = \text{plim}_{n\rightarrow\infty}n^{-1}X'P_W (u) = 0\)
+
+\subsection{b}
+Note that by the FWL theorem, the residuals and fitted values of \(y = X\beta_0 + u\) and \(M_\iota y =M_\iota X\beta_0 + M_\iota u\) are equivalent.  Similarly, the residuals and fitted values of \(y = Z\gamma_0 + u\) and \(M_\iota y = M_\iota Z \gamma_0 + M_\iota u\).  So we have:
+\begin{align*}
+    M_\iota y = x_2 \beta_{2_0} +M_\iota u \\
+    \& \quad M_\iota y = z_2 \gamma_{2_0} + M_\iota u
+\end{align*}
+Substituting \(z_2 = 10x_2\) in, we have:
+\begin{align*}
+    M_\iota y = x_2 \beta_{2_0} +M_\iota u \\
+    \& \quad M_\iota y = x_2\cdot 10 \gamma_{2_0} + M_\iota u
+\end{align*}
+So it must be that \(\gamma_{2_0} = \frac{\beta_{2_0}}{10}\).  If \(x_2 \beta_{2_0} = x_2\cdot 10 \gamma_{2_0} = z_2 \gamma_{2_0}\), then \(X\beta_0=Z\gamma_0\) as well, and \(P_WX\beta_0=P_WZ\gamma_0\), so the regression will be equivalent.
